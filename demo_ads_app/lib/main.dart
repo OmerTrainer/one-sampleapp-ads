@@ -50,10 +50,80 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   AdManagerBannerAd? underMainArticleBanner;
+  AdManagerBannerAd? aboveVideoSectionBanner;
+  AdManagerBannerAd? underVideoSectionBanner;
+  AdManagerBannerAd? underGlitchesSectionBanner;
+   
 
-  Future createUnderMainArticleBannerAd(String adUnitId) async {
+
+  Future createUnderGlitchesBannerAd() async{
     await AdManagerBannerAd(
-      adUnitId: adUnitId,
+      adUnitId: '/6870/one_app/one_iphone_kubia_main',
+      sizes: [AdSize.mediumRectangle],
+      request:  const AdManagerAdRequest(),
+      listener: AdManagerBannerAdListener(
+        onAdLoaded: (ad) {
+          setState(() {
+            underGlitchesSectionBanner = ad as AdManagerBannerAd;
+          });
+        },
+        onAdFailedToLoad: (ad, error) {
+          setState(() {
+            underGlitchesSectionBanner = null;
+          });
+          print('Ad load failed (code=${error.code} message=${error.message})');
+          ad.dispose();
+        },
+      ),
+    ).load();
+  }
+
+  Future createAboveVideoSectionBannerAd() async{
+    await AdManagerBannerAd(
+      adUnitId: '/6870/one_app/one_doublestrip',
+      sizes: [AdSize.largeBanner],
+      request:  const AdManagerAdRequest(),
+      listener: AdManagerBannerAdListener(
+        onAdLoaded: (ad) {
+          setState(() {
+            aboveVideoSectionBanner = ad as AdManagerBannerAd;
+          });
+        },
+        onAdFailedToLoad: (ad, error) {
+          setState(() {
+            aboveVideoSectionBanner = null;
+          });
+          print('Ad load failed (code=${error.code} message=${error.message})');
+          ad.dispose();
+        },
+      ),
+    ).load();
+  }
+
+  Future createUnderVideoSectionBannerAd() async{
+    await AdManagerBannerAd(
+      adUnitId: '/6870/one_app/one_iphone_banners_new/ONE_Iphone_Banners_Store',
+      sizes: [AdSize.banner],
+      request:  const AdManagerAdRequest(),
+      listener: AdManagerBannerAdListener(
+        onAdLoaded: (ad) {
+          setState(() {
+            underVideoSectionBanner = ad as AdManagerBannerAd;
+          });
+        },
+        onAdFailedToLoad: (ad, error) {
+          setState(() {
+            underVideoSectionBanner = null;
+          });
+          print('Ad load failed (code=${error.code} message=${error.message})');
+          ad.dispose();
+        },
+      ),
+    ).load();
+  }
+  Future createUnderMainArticleBannerAd() async {
+    await AdManagerBannerAd(
+      adUnitId: '/6870/one_app/one_doublestrip_top',
       sizes: [AdSize.largeBanner],
       request: const AdManagerAdRequest(),
       listener: AdManagerBannerAdListener(
@@ -74,6 +144,16 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    createUnderMainArticleBannerAd();
+    createAboveVideoSectionBannerAd();
+    createUnderGlitchesBannerAd();
+    createUnderVideoSectionBannerAd();
+  }
+ 
+  @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
@@ -88,13 +168,40 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: ListView(shrinkWrap: true, children: [
-        Container(
+       underMainArticleBanner != null ? Container(
           color: const Color(0xFFD0D0D0),
           height: underMainArticleBanner!.sizes[0].height.toDouble(),
           width: MediaQuery.of(context).size.width,
           child: AdWidget(ad: underMainArticleBanner!),
-        )
-      ]),
+        ) : const SizedBox.shrink(),
+                Container(height: 300,color: Colors.amber,),
+
+         aboveVideoSectionBanner != null ? Container(
+          color: const Color(0xFFD0D0D0),
+          height: aboveVideoSectionBanner!.sizes[0].height.toDouble(),
+          width: MediaQuery.of(context).size.width,
+          child: AdWidget(ad: aboveVideoSectionBanner!),
+        ) : const SizedBox.shrink(),
+                Container(height: 300,color: Colors.amber,),
+
+         underVideoSectionBanner != null ? Container(
+          color: const Color(0xFFD0D0D0),
+          height: underVideoSectionBanner!.sizes[0].height.toDouble(),
+          width: MediaQuery.of(context).size.width,
+          child: AdWidget(ad: underVideoSectionBanner!),
+        ) : const SizedBox.shrink(),
+                Container(height: 300,color: Colors.amber,),
+
+         underGlitchesSectionBanner != null ? Container(
+          color: const Color(0xFFD0D0D0),
+          height: underGlitchesSectionBanner!.sizes[0].height.toDouble(),
+          width: MediaQuery.of(context).size.width,
+          child: AdWidget(ad: underGlitchesSectionBanner!),
+        ) : const SizedBox.shrink(),
+        Container(height: 300,color: Colors.amber,),
+        
+        
+      ],),
     );
   }
 }
