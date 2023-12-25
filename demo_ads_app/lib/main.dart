@@ -1,3 +1,4 @@
+import 'package:demo_ads_app/article.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
@@ -53,14 +54,13 @@ class _MyHomePageState extends State<MyHomePage> {
   AdManagerBannerAd? aboveVideoSectionBanner;
   AdManagerBannerAd? underVideoSectionBanner;
   AdManagerBannerAd? underGlitchesSectionBanner;
-   
+  AdManagerBannerAd? bottomSheetAd;
 
-
-  Future createUnderGlitchesBannerAd() async{
+  Future createUnderGlitchesBannerAd() async {
     await AdManagerBannerAd(
       adUnitId: '/6870/one_app/one_iphone_kubia_main',
       sizes: [AdSize.mediumRectangle],
-      request:  const AdManagerAdRequest(),
+      request: const AdManagerAdRequest(),
       listener: AdManagerBannerAdListener(
         onAdLoaded: (ad) {
           setState(() {
@@ -78,11 +78,11 @@ class _MyHomePageState extends State<MyHomePage> {
     ).load();
   }
 
-  Future createAboveVideoSectionBannerAd() async{
+  Future createAboveVideoSectionBannerAd() async {
     await AdManagerBannerAd(
       adUnitId: '/6870/one_app/one_doublestrip',
       sizes: [AdSize.largeBanner],
-      request:  const AdManagerAdRequest(),
+      request: const AdManagerAdRequest(),
       listener: AdManagerBannerAdListener(
         onAdLoaded: (ad) {
           setState(() {
@@ -100,11 +100,11 @@ class _MyHomePageState extends State<MyHomePage> {
     ).load();
   }
 
-  Future createUnderVideoSectionBannerAd() async{
+  Future createUnderVideoSectionBannerAd() async {
     await AdManagerBannerAd(
       adUnitId: '/6870/one_app/one_iphone_banners_new/ONE_Iphone_Banners_Store',
       sizes: [AdSize.banner],
-      request:  const AdManagerAdRequest(),
+      request: const AdManagerAdRequest(),
       listener: AdManagerBannerAdListener(
         onAdLoaded: (ad) {
           setState(() {
@@ -121,6 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     ).load();
   }
+
   Future createUnderMainArticleBannerAd() async {
     await AdManagerBannerAd(
       adUnitId: '/6870/one_app/one_doublestrip_top',
@@ -143,6 +144,28 @@ class _MyHomePageState extends State<MyHomePage> {
     ).load();
   }
 
+  Future createBottomSheetAd() async {
+    await AdManagerBannerAd(
+      adUnitId: '/6870/ONE_APP/ONE_Iphone_Banners_New/ONE_Iphone_Banners_Main',
+      sizes: [AdSize.banner, AdSize.fluid],
+      request: const AdManagerAdRequest(),
+      listener: AdManagerBannerAdListener(
+        onAdLoaded: (ad) {
+          setState(() {
+            bottomSheetAd = ad as AdManagerBannerAd;
+          });
+        },
+        onAdFailedToLoad: (ad, error) {
+          setState(() {
+            bottomSheetAd = null;
+          });
+          print('Ad load failed (code=${error.code} message=${error.message})');
+          ad.dispose();
+        },
+      ),
+    ).load();
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -151,49 +174,143 @@ class _MyHomePageState extends State<MyHomePage> {
     createAboveVideoSectionBannerAd();
     createUnderGlitchesBannerAd();
     createUnderVideoSectionBannerAd();
+    createBottomSheetAd();
   }
- 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomSheet: bottomSheetAd != null
+          ? Container(
+              color: const Color(0xFFD0D0D0),
+              height: bottomSheetAd?.sizes[0].height.toDouble() ?? 0,
+              width: MediaQuery.of(context).size.width,
+              child: AdWidget(ad: bottomSheetAd!),
+            )
+          : null,
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: ListView(shrinkWrap: true, children: [
-       underMainArticleBanner != null ? Container(
-          color: const Color(0xFFD0D0D0),
-          height: underMainArticleBanner!.sizes[0].height.toDouble(),
-          width: MediaQuery.of(context).size.width,
-          child: AdWidget(ad: underMainArticleBanner!),
-        ) : const SizedBox.shrink(),
-                Container(height: 300,color: Colors.amber,),
-
-         aboveVideoSectionBanner != null ? Container(
-          color: const Color(0xFFD0D0D0),
-          height: aboveVideoSectionBanner!.sizes[0].height.toDouble(),
-          width: MediaQuery.of(context).size.width,
-          child: AdWidget(ad: aboveVideoSectionBanner!),
-        ) : const SizedBox.shrink(),
-                Container(height: 300,color: Colors.amber,),
-
-         underVideoSectionBanner != null ? Container(
-          color: const Color(0xFFD0D0D0),
-          height: underVideoSectionBanner!.sizes[0].height.toDouble(),
-          width: MediaQuery.of(context).size.width,
-          child: AdWidget(ad: underVideoSectionBanner!),
-        ) : const SizedBox.shrink(),
-                Container(height: 300,color: Colors.amber,),
-
-         underGlitchesSectionBanner != null ? Container(
-          color: const Color(0xFFD0D0D0),
-          height: underGlitchesSectionBanner!.sizes[0].height.toDouble(),
-          width: MediaQuery.of(context).size.width,
-          child: AdWidget(ad: underGlitchesSectionBanner!),
-        ) : const SizedBox.shrink(),
-        Container(height: 300,color: Colors.amber,),
-        
-        
-      ],),
+      body: ListView(
+        shrinkWrap: true,
+        children: [
+          ...[
+            SecondaryArticle(
+                title: 'fsafas',
+                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+                authorName: 'yossi'),
+            SecondaryArticle(
+                title: 'fsafas',
+                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+                authorName: 'yossi'),
+            SecondaryArticle(
+                title: 'fsafas',
+                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+                authorName: 'yossi'),
+            SecondaryArticle(
+                title: 'fsafas',
+                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+                authorName: 'yossi'),
+            SecondaryArticle(
+                title: 'fsafas',
+                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+                authorName: 'yossi'),
+          ],
+          underMainArticleBanner != null
+              ? Container(
+                  color: const Color(0xFFD0D0D0),
+                  height: underMainArticleBanner!.sizes[0].height.toDouble(),
+                  width: MediaQuery.of(context).size.width,
+                  child: AdWidget(ad: underMainArticleBanner!),
+                )
+              : const SizedBox.shrink(),
+          Container(
+            height: 300,
+            color: Colors.amber,
+          ),
+          aboveVideoSectionBanner != null
+              ? Container(
+                  color: const Color(0xFFD0D0D0),
+                  height: aboveVideoSectionBanner!.sizes[0].height.toDouble(),
+                  width: MediaQuery.of(context).size.width,
+                  child: AdWidget(ad: aboveVideoSectionBanner!),
+                )
+              : const SizedBox.shrink(),
+          ...[
+            SecondaryArticle(
+                title: 'fsafas',
+                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+                authorName: 'yossi'),
+            SecondaryArticle(
+                title: 'fsafas',
+                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+                authorName: 'yossi'),
+            SecondaryArticle(
+                title: 'fsafas',
+                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+                authorName: 'yossi'),
+            SecondaryArticle(
+                title: 'fsafas',
+                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+                authorName: 'yossi'),
+            SecondaryArticle(
+                title: 'fsafas',
+                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+                authorName: 'yossi'),
+          ],
+          Container(
+            height: 300,
+            color: Colors.amber,
+          ),
+          ...[
+            SecondaryArticle(
+                title: 'fsafas',
+                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+                authorName: 'yossi'),
+            SecondaryArticle(
+                title: 'fsafas',
+                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+                authorName: 'yossi'),
+            SecondaryArticle(
+                title: 'fsafas',
+                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+                authorName: 'yossi'),
+            SecondaryArticle(
+                title: 'fsafas',
+                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+                authorName: 'yossi'),
+            SecondaryArticle(
+                title: 'fsafas',
+                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+                authorName: 'yossi'),
+          ],
+          underVideoSectionBanner != null
+              ? Container(
+                  color: const Color(0xFFD0D0D0),
+                  height: underVideoSectionBanner!.sizes[0].height.toDouble(),
+                  width: MediaQuery.of(context).size.width,
+                  child: AdWidget(ad: underVideoSectionBanner!),
+                )
+              : const SizedBox.shrink(),
+          Container(
+            height: 300,
+            color: Colors.amber,
+          ),
+          underGlitchesSectionBanner != null
+              ? Container(
+                  color: const Color(0xFFD0D0D0),
+                  height:
+                      underGlitchesSectionBanner!.sizes[0].height.toDouble(),
+                  width: MediaQuery.of(context).size.width,
+                  child: AdWidget(ad: underGlitchesSectionBanner!),
+                )
+              : const SizedBox.shrink(),
+          Container(
+            height: 300,
+            color: Colors.amber,
+          ),
+        ],
+      ),
     );
   }
 }
