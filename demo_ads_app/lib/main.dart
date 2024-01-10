@@ -305,10 +305,28 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: AdWidget(ad: underGlitchesSectionBanner!),
                 )
               : const SizedBox.shrink(),
-          Container(
-            height: 300,
-            color: Colors.amber,
-          ),
+          ...[
+            SecondaryArticle(
+                title: 'fsafas',
+                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+                authorName: 'yossi'),
+            SecondaryArticle(
+                title: 'fsafas',
+                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+                authorName: 'yossi'),
+            SecondaryArticle(
+                title: 'fsafas',
+                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+                authorName: 'yossi'),
+            SecondaryArticle(
+                title: 'fsafas',
+                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+                authorName: 'yossi'),
+            SecondaryArticle(
+                title: 'fsafas',
+                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+                authorName: 'yossi'),
+          ],
         ],
       ),
     );
