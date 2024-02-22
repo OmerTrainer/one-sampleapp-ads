@@ -180,14 +180,14 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomSheet: bottomSheetAd != null
-          ? Container(
-              color: const Color(0xFFD0D0D0),
-              height: bottomSheetAd?.sizes[0].height.toDouble() ?? 0,
-              width: MediaQuery.of(context).size.width,
-              child: AdWidget(ad: bottomSheetAd!),
-            )
-          : null,
+      // bottomSheet: bottomSheetAd != null
+      //     ? Container(
+      //         color: const Color(0xFFD0D0D0),
+      //         height: bottomSheetAd?.sizes[0].height.toDouble() ?? 0,
+      //         width: MediaQuery.of(context).size.width,
+      //         child: AdWidget(ad: bottomSheetAd!),
+      //       )
+      //     : null,
       appBar: AppBar(
         title: Text(widget.title),
       ),
@@ -196,25 +196,45 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           ...[
             SecondaryArticle(
-                title: 'fsafas',
-                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
-                authorName: 'yossi'),
+              title: 'fsafas',
+              imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+              authorName: 'yossi',
+              articleUrl:
+                  'https://sites.one.co.il/Mobile/Article/23-24/1,1,2,46922/456317.html',
+              bottomSheetAd: bottomSheetAd,
+            ),
             SecondaryArticle(
-                title: 'fsafas',
-                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
-                authorName: 'yossi'),
+              title: 'fsafas',
+              imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+              authorName: 'yossi',
+              articleUrl:
+                  'https://sites.one.co.il/Mobile/Article/23-24/1,1,2,46922/456317.html',
+              bottomSheetAd: bottomSheetAd,
+            ),
             SecondaryArticle(
-                title: 'fsafas',
-                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
-                authorName: 'yossi'),
+              title: 'fsafas',
+              imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+              authorName: 'yossi',
+              articleUrl:
+                  'https://sites.one.co.il/Mobile/Article/23-24/1,1,2,46922/456317.html',
+              bottomSheetAd: bottomSheetAd,
+            ),
             SecondaryArticle(
-                title: 'fsafas',
-                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
-                authorName: 'yossi'),
+              title: 'fsafas',
+              imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+              authorName: 'yossi',
+              articleUrl:
+                  'https://sites.one.co.il/Mobile/Article/23-24/1,1,2,46922/456317.html',
+              bottomSheetAd: bottomSheetAd,
+            ),
             SecondaryArticle(
-                title: 'fsafas',
-                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
-                authorName: 'yossi'),
+              title: 'fsafas',
+              imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+              authorName: 'yossi',
+              articleUrl:
+                  'https://sites.one.co.il/Mobile/Article/23-24/1,1,2,46922/456317.html',
+              bottomSheetAd: bottomSheetAd,
+            ),
           ],
           underMainArticleBanner != null
               ? Container(
@@ -238,25 +258,45 @@ class _MyHomePageState extends State<MyHomePage> {
               : const SizedBox.shrink(),
           ...[
             SecondaryArticle(
-                title: 'fsafas',
-                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
-                authorName: 'yossi'),
+              title: 'fsafas',
+              imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+              authorName: 'yossi',
+              articleUrl:
+                  'https://sites.one.co.il/Mobile/Article/23-24/1,1,2,46922/456317.html',
+              bottomSheetAd: bottomSheetAd,
+            ),
             SecondaryArticle(
-                title: 'fsafas',
-                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
-                authorName: 'yossi'),
+              title: 'fsafas',
+              imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+              authorName: 'yossi',
+              articleUrl:
+                  'https://sites.one.co.il/Mobile/Article/23-24/1,1,2,46922/456317.html',
+              bottomSheetAd: bottomSheetAd,
+            ),
             SecondaryArticle(
-                title: 'fsafas',
-                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
-                authorName: 'yossi'),
+              title: 'fsafas',
+              imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+              authorName: 'yossi',
+              articleUrl:
+                  'https://sites.one.co.il/Mobile/Article/23-24/1,1,2,46922/456317.html',
+              bottomSheetAd: bottomSheetAd,
+            ),
             SecondaryArticle(
-                title: 'fsafas',
-                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
-                authorName: 'yossi'),
+              title: 'fsafas',
+              imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+              authorName: 'yossi',
+              articleUrl:
+                  'https://sites.one.co.il/Mobile/Article/23-24/1,1,2,46922/456317.html',
+              bottomSheetAd: bottomSheetAd,
+            ),
             SecondaryArticle(
-                title: 'fsafas',
-                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
-                authorName: 'yossi'),
+              title: 'fsafas',
+              imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+              authorName: 'yossi',
+              articleUrl:
+                  'https://sites.one.co.il/Mobile/Article/23-24/1,1,2,46922/456317.html',
+              bottomSheetAd: bottomSheetAd,
+            ),
           ],
           Container(
             height: 300,
@@ -264,25 +304,45 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           ...[
             SecondaryArticle(
-                title: 'fsafas',
-                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
-                authorName: 'yossi'),
+              title: 'fsafas',
+              imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+              authorName: 'yossi',
+              articleUrl:
+                  'https://sites.one.co.il/Mobile/Article/23-24/1,1,2,46922/456317.html',
+              bottomSheetAd: bottomSheetAd,
+            ),
             SecondaryArticle(
-                title: 'fsafas',
-                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
-                authorName: 'yossi'),
+              title: 'fsafas',
+              imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+              authorName: 'yossi',
+              articleUrl:
+                  'https://sites.one.co.il/Mobile/Article/23-24/1,1,2,46922/456317.html',
+              bottomSheetAd: bottomSheetAd,
+            ),
             SecondaryArticle(
-                title: 'fsafas',
-                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
-                authorName: 'yossi'),
+              title: 'fsafas',
+              imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+              authorName: 'yossi',
+              articleUrl:
+                  'https://sites.one.co.il/Mobile/Article/23-24/1,1,2,46922/456317.html',
+              bottomSheetAd: bottomSheetAd,
+            ),
             SecondaryArticle(
-                title: 'fsafas',
-                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
-                authorName: 'yossi'),
+              title: 'fsafas',
+              imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+              authorName: 'yossi',
+              articleUrl:
+                  'https://sites.one.co.il/Mobile/Article/23-24/1,1,2,46922/456317.html',
+              bottomSheetAd: bottomSheetAd,
+            ),
             SecondaryArticle(
-                title: 'fsafas',
-                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
-                authorName: 'yossi'),
+              title: 'fsafas',
+              imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+              authorName: 'yossi',
+              articleUrl:
+                  'https://sites.one.co.il/Mobile/Article/23-24/1,1,2,46922/456317.html',
+              bottomSheetAd: bottomSheetAd,
+            ),
           ],
           underVideoSectionBanner != null
               ? Container(
@@ -307,25 +367,45 @@ class _MyHomePageState extends State<MyHomePage> {
               : const SizedBox.shrink(),
           ...[
             SecondaryArticle(
-                title: 'fsafas',
-                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
-                authorName: 'yossi'),
+              title: 'fsafas',
+              imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+              authorName: 'yossi',
+              articleUrl:
+                  'https://sites.one.co.il/Mobile/Article/23-24/1,1,2,46922/456317.html',
+              bottomSheetAd: bottomSheetAd,
+            ),
             SecondaryArticle(
-                title: 'fsafas',
-                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
-                authorName: 'yossi'),
+              title: 'fsafas',
+              imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+              authorName: 'yossi',
+              articleUrl:
+                  'https://sites.one.co.il/Mobile/Article/23-24/1,1,2,46922/456317.html',
+              bottomSheetAd: bottomSheetAd,
+            ),
             SecondaryArticle(
-                title: 'fsafas',
-                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
-                authorName: 'yossi'),
+              title: 'fsafas',
+              imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+              authorName: 'yossi',
+              articleUrl:
+                  'https://sites.one.co.il/Mobile/Article/23-24/1,1,2,46922/456317.html',
+              bottomSheetAd: bottomSheetAd,
+            ),
             SecondaryArticle(
-                title: 'fsafas',
-                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
-                authorName: 'yossi'),
+              title: 'fsafas',
+              imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+              authorName: 'yossi',
+              articleUrl:
+                  'https://sites.one.co.il/Mobile/Article/23-24/1,1,2,46922/456317.html',
+              bottomSheetAd: bottomSheetAd,
+            ),
             SecondaryArticle(
-                title: 'fsafas',
-                imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
-                authorName: 'yossi'),
+              title: 'fsafas',
+              imageUrl: 'https://photo.one.co.il/Image/GG/2,1/1700584.webp',
+              authorName: 'yossi',
+              articleUrl:
+                  'https://sites.one.co.il/Mobile/Article/23-24/1,1,2,46922/456317.html',
+              bottomSheetAd: bottomSheetAd,
+            ),
           ],
         ],
       ),
